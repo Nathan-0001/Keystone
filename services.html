@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="navbar" class="navbar">
+            <ul id="stick">
+                <li><img src="keystone.png" alt="Keystone Archaeology Logo"></li>
+                <li><a class="hideOnMobile" href="#Home">Home</a></li>
+                <li class="hideOnMobile" ><a href="#About">About Us</a></li>
+                <li class="hideOnMobile"><a href="services.html">Services</a></li>
+                <li class="hideOnMobile"><a href="#Contact">Contact Us</a></li>
+                <li onclick=showSidebar() class="menu-button" ><a title="menu" href="#" title="Open menu"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26" fill="#fff"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+            </ul>
+            <ul class="sidebar">
+                <li onclick=hideSidebar()><a title="close" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                <li><a onclick=hideSidebar() href="index.html">Home</a></li>
+                <li><a onclick=hideSidebar() href="index.html, #About">About Us</a></li>
+                <li><a onclick=hideSidebar() href="services.html">Services</a></li>
+                <li><a onclick=hideSidebar() href="#Contact" >Contact Us</a></li>
+            </ul>    
+        </nav>
+        <main></main>
+<script src="script.js"></script>
+</body>
+</html>

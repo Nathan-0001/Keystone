@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keystone Archaeology</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <nav id="navbar" class="navbar">
+            <ul class="nav">
+                <li><img src="keystone.png" alt="Keystone Archaeology Logo" id="keystoneimg"></li>
+                <li><a class="hideOnMobile" href="#Home">Home</a></li>
+                <li class="hideOnMobile" ><a href="#About">About Us</a></li>
+                <li class="hideOnMobile"><a href="services.html">Services</a></li>
+                <li class="hideOnMobile"><a href="#Contact">Contact Us</a></li>
+                <li onclick=showSidebar() class="menu-button" ><a title="menu" href="#" title="Open menu"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26" fill="#fff"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+                    </a> 
+                </li>
+            </ul>
+            <ul class="sidebar">
+                <li onclick=hideSidebar()><a title="close" href="#" class="sbx"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                <li><a onclick=hideSidebar() href="#Home"><p class="sb">Home</p></a></li>
+                <li><a onclick=hideSidebar() href="#About"><p class="sb">About Us</p></a></li>
+                <li><a onclick=hideSidebar() href="services.html"><p class="sb">Services</p></a></li>
+                <li><a onclick=hideSidebar() href="#Contact" ><p class="sb">Contact Us</p></a></li>
+            </ul>    
+        </nav>
+        <header><div class="keystone">
+            <h1 >Keystone Archaeology</h1>
+            <p ">Your gateway to the past</p></header>
+        <main>
+        </div>
+        <div class="nothing"></div>
+        </main>
+        <footer id="Contact">
+            <h1>Contact Us</h1>
+            <h3 class="email">Email:<p></p></h3>
+            <h3 class="phone">Phone:<p></p></h3>
+        </footer>
+<script src="script.js"></script>
+</body>
+</html>
