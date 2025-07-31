@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keystone Archaeology</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     
 </head>
 <body>
     <nav id="navbar" class="navbar">
             <ul class="nav">
-                <li><img src="keystone.png" alt="Keystone Archaeology Logo" id="keystoneimg"></li>
+                <li><img src="img/keystone.png" alt="Keystone Archaeology Logo" id="keystoneimg"></li>
                 <li><a class="hideOnMobile" href="#Home">Home</a></li>
                 <li class="hideOnMobile" ><a href="#About">About Us</a></li>
                 <li class="hideOnMobile"><a href="services.html">Services</a></li>
@@ -23,15 +23,28 @@
                 <li onclick=hideSidebar()><a title="close" href="#" class="sbx"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
                 <li><a onclick=hideSidebar() href="#Home"><p class="sb">Home</p></a></li>
                 <li><a onclick=hideSidebar() href="#About"><p class="sb">About Us</p></a></li>
-                <li><a onclick=hideSidebar() href="services.html"><p class="sb">Services</p></a></li>
+                <li><a onclick=hideSidebar() href="html/services.html"><p class="sb">Services</p></a></li>
                 <li><a onclick=hideSidebar() href="#Contact" ><p class="sb">Contact Us</p></a></li>
             </ul>    
         </nav>
-        <header><div class="keystone">
+        <header class="keystone">
+            <div class="carousel">
+                
+                <div class="carousel__track-container">
+                    <button class="carousel__button carousel__button--left"><img src="img/left.png" alt=""></button>
+                    <ul class="carousel__track">
+                        <li class="carousel__slide current-slide"><img class="carousel__image" src="img/carousel1.jpg" alt="Carousel image 1"></li>
+                        <li class="carousel__slide"><img class="carousel__image" src="img/carousel2.jpg" alt="Carousel image 2"></li>
+                        <li class="carousel__slide"><img class="carousel__image" src="img/carousel3.jpg" alt="Carousel image 3"></li>
+                    </ul>
+                    <button class="carousel__button carousel__button--right"><img src="img/right.png" alt=""></button>
+                </div>
+            </div>
             <h1 >Keystone Archaeology</h1>
-            <p ">Your gateway to the past</p></header>
+            <p ">Your gateway to the past</p>
+
+        </header>
         <main>
-        </div>
         <div class="nothing"></div>
         </main>
         <footer id="Contact">
