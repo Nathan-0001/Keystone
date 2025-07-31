@@ -164,8 +164,6 @@ main { height : 100%; }
 
 .keystone { 
     height: 85vh;
-    border: 1px solid red;
-    
 }
 
 #keystoneimg {
@@ -187,6 +185,7 @@ text-align: center;}
     margin-left: 8vw;
     margin-top: -8vh;
     z-index: 50;
+    padding: 8px;
 }
 
 .nothing{
