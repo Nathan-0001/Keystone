@@ -3,40 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Keystone Archaeology - Your gateway to the past">
     <title>Keystone Archaeology</title>
-    <link rel="stylesheet" href="assets/CSS/styles.css">
-    
+    <link rel="stylesheet" href="assets/CSS/styles-responsive.css?v=1.1">
 </head>
 <body>
+    <!-- Navigation -->
     <div id="header"></div>
-        <header class="keystone">
-            <div class="carousel">
-                <div class="carousel__track-container">
-                    <button class="carousel__button carousel__button--left is-hidden" title="Previous slide">
-                        <img src="assets/IMG/left.png" alt="">
-                    </button>
-                    <ul class="carousel__track">
-                        <li class="carousel__slide current-slide"><img class="carousel__image" src="assets/IMG/carousel1.jpg" alt="Carousel image 1"></li>
-                        <li class="carousel__slide"><img class="carousel__image" src="assets/IMG/carousel2.jpg" alt="Carousel image 2"></li>
-                        <li class="carousel__slide"><img class="carousel__image" src="assets/IMG/carousel3.jpg" alt="Carousel image 3"></li>
-                    </ul>
-                    <button class="carousel__button carousel__button--right" title="Next slide">
-                        <img src="assets/IMG/right.png" alt="">
-                    </button>
-                </div>
+    
+    <!-- Carousel -->
+    <header class="keystone">
+        <div class="carousel">
+            <div class="carousel__track-container">
+                <button class="carousel__button carousel__button--left is-hidden" title="Previous slide" aria-label="Previous image">
+                    <img src="assets/IMG/left.png" alt="">
+                </button>
+                <ul class="carousel__track">
+                    <li class="carousel__slide current-slide"><img class="carousel__image" src="assets/IMG/carousel1.jpg" alt="Carousel image 1 - Archaeological excavation"></li>
+                    <li class="carousel__slide"><img class="carousel__image" src="assets/IMG/carousel2.jpg" alt="Carousel image 2 - Archaeological artifacts"></li>
+                </ul>
+                <button class="carousel__button carousel__button--right" title="Next slide" aria-label="Next image">
+                    <img src="assets/IMG/right.png" alt="">
+                </button>
             </div>
+        </div>
+    </header>
 
-        </header>
-        <div class="keystone-box">
-                <h1 >Keystone Archaeology</h1>
-                <h3>Your gateway to the past</h3>
-                <br />
-                <p>Keystone Archaeology is a team of skilled archaeologists working hard to preserve the rich cultural heritage of the land, excavating and researching areas across the nation!</p>
+    <!-- Hero Section -->
+    <div class="keystone-box">
+        <h1>Keystone Archaeology</h1>
+        <h3>Your Gateway to the Past</h3>
+        <p>Keystone Archaeology is a team of skilled archaeologists working hard to preserve the rich cultural heritage of the land, excavating and researching areas across the nation!</p>
+    </div>
+
+    <!-- About Sections -->
+    <div class="about-sections">
+        <div class="about-block">
+            <img src="assets/IMG/Image 2025-07-31 at 20.43.55_a0e7f3b6.jpg" alt="Who We Are">
+            <div class="about-content">
+                <h2>Who We Are</h2>
+                <p>Keystone Archaeology is a dedicated team of professional archaeologists passionate about uncovering and preserving the UK's rich historical heritage. With years of experience in excavation, analysis, and heritage consultancy, we work closely with developers, local authorities, and communities to ensure that archaeological remains are properly documented and protected before development takes place.</p>
             </div>
-        <main>
+        </div>
+        <div class="about-block">
+            <img src="assets/IMG/IMG-20250731-WA0015.jpg" alt="What We Do">
+            <div class="about-content">
+                <h2>What We Do</h2>
+                <p>We provide comprehensive archaeological services including desk-based assessments, trial trenching, excavation, watching briefs, and post-excavation analysis. Our team conducts thorough investigations to identify, record, and preserve archaeological sites, ensuring compliance with planning regulations and heritage legislation while contributing to our understanding of the past.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
         <div class="nothing"></div>
-        </main>
-        <div id="footer"></div>
-<script src="assets/JS/script.js"></script>
+    </main>
+
+    <!-- Footer -->
+    <footer id="Contact">
+        <h1>Contact Us</h1>
+        <div class="contact-info">
+            <div class="contact-section phone-section">
+                <h3>Phone</h3>
+                <p>+44 (0) 999 123 456</p>
+                <p>+44 (0) 999 654 321</p>
+            </div>
+            <div class="contact-section email-section">
+                <h3>Email</h3>
+                <p>BlahBlah@keystonearchaeology.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/JS/script-new.js"></script>
 </body>
 </html>

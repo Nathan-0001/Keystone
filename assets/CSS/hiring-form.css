@@ -1,0 +1,161 @@
+/* ===== HIRING FORM STYLES ===== */
+
+/* Form Specific Styles */
+.application-form {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-top: var(--spacing-xl);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color4);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group.file-upload {
+    position: relative;
+}
+
+.form-group input[type="file"] {
+    padding: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.file-upload-label {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    border: 2px dashed var(--color4);
+    border-radius: 4px;
+    background: rgba(33, 150, 243, 0.05);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.file-upload-label:hover {
+    background: rgba(33, 150, 243, 0.1);
+    border-color: var(--color3);
+}
+
+.file-upload-label input[type="file"] {
+    display: none;
+}
+
+.file-upload-text {
+    flex: 1;
+    color: var(--text-color);
+}
+
+.file-name {
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: #f0f0f0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--color4);
+    word-break: break-word;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--color4);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    min-height: 44px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+    background: #1976d2;
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+.required {
+    color: var(--color3);
+}
+
+.form-help-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: var(--spacing-xs);
+}
+
+/* Hero background section */
+.hiring-hero {
+    position: relative;
+    background-image: linear-gradient(135deg, rgba(33, 150, 243, 0.8), rgba(68, 230, 194, 0.7)), url('/assets/IMG/IMG-20250731-WA0018.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    margin-bottom: -50px;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+@media (min-width: 481px) {
+    .application-form {
+        padding: var(--spacing-xl);
+    }
+
+    .hiring-hero {
+        padding: var(--spacing-xl) var(--spacing-xl);
+        margin-bottom: -60px;
+    }
+}
+
+@media (min-width: 769px) {
+    .hiring-hero {
+        padding: var(--spacing-xl) var(--spacing-xl);
+        margin-bottom: -70px;
+    }
+}

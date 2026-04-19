@@ -3,9 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keystone Archaeology Hiring Page</title>
+    <meta name="description" content="Keystone Archaeology - Apply to join our team of archaeologists">
+    <title>Apply - Keystone Archaeology</title>
+    <link rel="stylesheet" href="assets/CSS/styles-responsive.css?v=1.1">
+    <link rel="stylesheet" href="assets/CSS/hiring-form.css?v=1.0">
 </head>
 <body>
+    <!-- Navigation -->
+    <div id="header"></div>
     
+    <!-- Main Content -->
+    <main>
+        <div class="keystone-box hiring-hero">
+            <h1>Join Our Team</h1>
+            <h3>Career Opportunities</h3>
+            <p>If you're passionate about archaeology and want to contribute to preserving cultural heritage, we'd love to hear from you! Fill out the form below to apply.</p>
+        </div>
+        
+        <!-- Application Form -->
+        <form class="application-form" id="jobApplicationForm" method="POST" enctype="multipart/form-data">
+            <h2 style="margin-bottom: var(--spacing-lg); color: var(--text-color); font-size: 1.5rem;">Application Form</h2>
+            
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullName">
+                    Full Name <span class="required">*</span>
+                </label>
+                <input 
+                    type="text" 
+                    id="fullName" 
+                    name="fullName" 
+                    placeholder="Enter your full name"
+                    required
+                    minlength="2"
+                >
+                <div class="form-help-text">Required field</div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">
+                    Email Address <span class="required">*</span>
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="your.email@example.com"
+                    required
+                >
+                <div class="form-help-text">We'll use this to contact you</div>
+            </div>
+
+            <!-- Phone Number 1 -->
+            <div class="form-group">
+                <label for="phone1">
+                    Phone Number <span class="required">*</span>
+                </label>
+                <input 
+                    type="tel" 
+                    id="phone1" 
+                    name="phone1" 
+                    placeholder="+44 (0) 999 123 456"
+                    pattern="[0-9\-\(\)\s\+]+"
+                    required
+                >
+                <div class="form-help-text">Include area code</div>
+            </div>
+
+            <!-- CV Upload -->
+            <div class="form-group file-upload">
+                <label for="cvFile">
+                    Attach CV / Resume <span class="required">*</span>
+                </label>
+                <label for="cvFile" class="file-upload-label">
+                    <span class="file-upload-text">
+                        📎 Click to upload or drag and drop
+                        <div style="font-size: 0.85rem; margin-top: 0.25rem; opacity: 0.8;">PDF, DOC, DOCX (Max 5MB)</div>
+                    </span>
+                </label>
+                <input 
+                    type="file" 
+                    id="cvFile" 
+                    name="cv" 
+                    accept=".pdf,.doc,.docx"
+                    required
+                    aria-label="Upload your CV or resume"
+                >
+                <div id="fileName" class="file-name" style="display: none;"></div>
+                <div class="form-help-text">Accepted formats: PDF, DOC, DOCX (Maximum 5MB)</div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">
+                Submit Application
+            </button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer id="Contact">
+        <h1>Contact Us</h1>
+        <div class="contact-info">
+            <div class="contact-section phone-section">
+                <h3>Phone</h3>
+                <p>+44 (0) 999 123 456</p>
+                <p>+44 (0) 999 654 321</p>
+            </div>
+            <div class="contact-section email-section">
+                <h3>Email</h3>
+                <p>BlahBlah@keystonearchaeology.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // File upload display
+        const fileInput = document.getElementById('cvFile');
+        const fileNameDisplay = document.getElementById('fileName');
+
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                const file = this.files[0];
+                const fileName = file.name;
+                const fileSize = (file.size / 1024 / 1024).toFixed(2); // Convert to MB
+
+                // Check file size (5MB max)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size exceeds 5MB limit. Please choose a smaller file.');
+                    this.value = '';
+                    fileNameDisplay.style.display = 'none';
+                    return;
+                }
+
+                fileNameDisplay.textContent = `✓ ${fileName} (${fileSize}MB)`;
+                fileNameDisplay.style.display = 'block';
+            }
+        });
+
+        // Form submission
+        document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const cvFile = document.getElementById('cvFile').files[0];
+
+            if (!fullName || !email || !phone1 || !cvFile) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Success message
+            alert('Thank you for your application! We will review your submission and contact you soon.');
+            
+            // Reset form
+            this.reset();
+            fileNameDisplay.style.display = 'none';
+        });
+    </script>
+
+    <script src="assets/JS/script-new.js"></script>
 </body>
 </html>

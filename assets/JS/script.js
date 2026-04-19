@@ -35,97 +35,77 @@ async function loadPartial(selector, url) {
 async function loadPartialsIfNeeded() {
   // support multiple placeholder id variants that you may use
     const mappings = [
-    { sel: '#header', url: '/Keystone/Partials/header.html' },
-    { sel: '#site-header', url: '/Keystone/Partials/header.html' },
-    { sel: '#site-nav', url: '/Keystone/Partials/header.html' },
-    { sel: '#footer', url: '/Keystone/Partials/footer.html' },
-    { sel: '#site-footer', url: '/Keystone/Partials/footer.html' }
+    { sel: '#header', url: '/Partials/header.html' },
+    { sel: '#site-header', url: '/Partials/header.html' },
+    { sel: '#site-nav', url: '/Partials/header.html' },
+    { sel: '#footer', url: '/Partials/footer.html' },
+    { sel: '#site-footer', url: '/Partials/footer.html' }
     ];
     await Promise.all(mappings.map(m => loadPartial(m.sel, m.url)));
 }
 
 function initNav() {
-    const sidebar = document.querySelector('.sidebar'); // mobile panel
-    const menuButtonLi = document.querySelector('.menu-button'); // your li.menu-button
-  // prefer explicit button if present, fallback to anchor or li itself
-    const menuButton =
-    (menuButtonLi && (menuButtonLi.querySelector('button') || menuButtonLi.querySelector('a'))) ||
-    menuButtonLi ||
-    document.getElementById('menuBtn');
-
- // close control inside sidebar (various markup possibilities)
-const closeBtn =
-    (sidebar && (sidebar.querySelector('#sidebarCloseBtn') ||
-        sidebar.querySelector('.sbx button') ||
-        sidebar.querySelector('.sbx a') ||
-        sidebar.querySelector('li:first-child button') ||
-        sidebar.querySelector('li:first-child a'))) || null;
+    const navMenu = document.querySelector('.nav-menu'); // mobile menu
+    const navToggle = document.querySelector('.nav-toggle'); // hamburger button
 
 function isOpen() {
-    return sidebar && sidebar.classList.contains('open');
+    return navMenu && navMenu.classList.contains('active');
 }
-function openSidebar() {
-    if (!sidebar) return;
-    sidebar.classList.add('open');
-    sidebar.setAttribute('aria-hidden', 'false');
-    if (menuButton && menuButton.setAttribute) menuButton.setAttribute('aria-expanded', 'true');
+
+function openMenu() {
+    if (!navMenu) return;
+    navMenu.classList.add('active');
+    navMenu.setAttribute('aria-hidden', 'false');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
     // focus first interactive element for keyboard users
-    const focusTarget = sidebar.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+    const focusTarget = navMenu.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
     if (focusTarget) focusTarget.focus();
 }
 
-function closeSidebar() {
-    if (!sidebar) return;
-    sidebar.classList.remove('open');
-    sidebar.setAttribute('aria-hidden', 'true');
-    if (menuButton && menuButton.setAttribute) menuButton.setAttribute('aria-expanded', 'false');
-    if (menuButton && menuButton.focus) menuButton.focus();
+function closeMenu() {
+    if (!navMenu) return;
+    navMenu.classList.remove('active');
+    navMenu.setAttribute('aria-hidden', 'true');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    if (navToggle) navToggle.focus();
 }
 
-window.showSidebar = openSidebar;
-window.hideSidebar = closeSidebar;
+window.showSidebar = openMenu;
+window.hideSidebar = closeMenu;
 
   // Bind toggle on menu button
-if (menuButton) {
-    menuButton.addEventListener('click', (e) => {
-      if (e && e.preventDefault) e.preventDefault(); // prevent '#' jumps
-    isOpen() ? closeSidebar() : openSidebar();
+if (navToggle) {
+    navToggle.addEventListener('click', (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+    isOpen() ? closeMenu() : openMenu();
     });
 }
 
-  // Bind close inside sidebar
-if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    closeSidebar();
-    });
-}
-
-// Any link inside sidebar should close the panel after navigating
-if (sidebar) {
-    sidebar.querySelectorAll('a').forEach(a => {
+  // Close menu when clicking on a link
+if (navMenu) {
+    navMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-        // small delay to allow link navigation to begin
-        setTimeout(closeSidebar, 50);
+        setTimeout(closeMenu, 50);
     });
     });
 }
+
   // Click outside to close
 document.addEventListener('click', (e) => {
-    if (!sidebar || !isOpen()) return;
+    if (!navMenu || !isOpen()) return;
     const target = e.target;
-    if (menuButton && (menuButton === target || menuButton.contains(target))) return;
-    if (!sidebar.contains(target)) closeSidebar();
+    if (navToggle && (navToggle === target || navToggle.contains(target))) return;
+    if (!navMenu.contains(target)) closeMenu();
 });
 
   // Escape key closes
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isOpen()) closeSidebar();
+    if (e.key === 'Escape' && isOpen()) closeMenu();
 });
 
-  // Set initial ARIA states if missing
-if (sidebar && !sidebar.hasAttribute('aria-hidden')) sidebar.setAttribute('aria-hidden', 'true');
-if (menuButton && !menuButton.hasAttribute('aria-expanded')) menuButton.setAttribute('aria-expanded', 'false');
+  // Set initial ARIA states
+if (navMenu && !navMenu.hasAttribute('aria-hidden')) navMenu.setAttribute('aria-hidden', 'true');
+if (navToggle && !navToggle.hasAttribute('aria-expanded')) navToggle.setAttribute('aria-expanded', 'false');
 }
 
 // CAROUSEL
