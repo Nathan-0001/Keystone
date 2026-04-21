@@ -106,20 +106,22 @@ main {
     height: 2px;
     background: var(--text-color);
     transition: var(--transition);
+    margin: 0;
 }
 
 .hamburger::before,
 .hamburger::after {
     content: '';
     position: absolute;
+    left: 0;
     width: 24px;
     height: 2px;
     background: var(--text-color);
     transition: var(--transition);
 }
 
-.hamburger::before { top: -8px; }
-.hamburger::after { bottom: -8px; }
+.hamburger::before { top: -7px; }
+.hamburger::after { top: 7px; }
 
 /* Mobile Menu */
 .nav-menu {
