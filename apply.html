@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,32 +8,35 @@
     <link rel="stylesheet" href="assets/CSS/styles-responsive.css?v=1.1">
     <link rel="stylesheet" href="assets/CSS/hiring-form.css?v=1.0">
 </head>
-
 <body>
     <!-- Navigation -->
     <div id="header"></div>
-
+    
     <!-- Main Content -->
     <main>
         <div class="keystone-box hiring-hero">
             <h1>Join Our Team</h1>
             <h3>Career Opportunities</h3>
-            <p>If you're passionate about archaeology and want to contribute to preserving cultural heritage, we'd love
-                to hear from you! Fill out the form below to apply.</p>
+            <p>If you're passionate about archaeology and want to contribute to preserving cultural heritage, we'd love to hear from you! Fill out the form below to apply.</p>
         </div>
-
+        
         <!-- Application Form -->
         <form class="application-form" id="jobApplicationForm" method="POST" enctype="multipart/form-data">
-            <h2 style="margin-bottom: var(--spacing-lg); color: var(--text-color); font-size: 1.5rem;">Application Form
-            </h2>
-
+            <h2 style="margin-bottom: var(--spacing-lg); color: var(--text-color); font-size: 1.5rem;">Application Form</h2>
+            
             <!-- Full Name -->
             <div class="form-group">
                 <label for="fullName">
                     Full Name <span class="required">*</span>
                 </label>
-                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required
-                    minlength="2">
+                <input 
+                    type="text" 
+                    id="fullName" 
+                    name="fullName" 
+                    placeholder="Enter your full name"
+                    required
+                    minlength="2"
+                >
                 <div class="form-help-text">Required field</div>
             </div>
 
@@ -43,7 +45,13 @@
                 <label for="email">
                     Email Address <span class="required">*</span>
                 </label>
-                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="your.email@example.com"
+                    required
+                >
                 <div class="form-help-text">We'll use this to contact you</div>
             </div>
 
@@ -52,8 +60,14 @@
                 <label for="phone1">
                     Phone Number <span class="required">*</span>
                 </label>
-                <input type="tel" id="phone1" name="phone1" placeholder="07999 123 456" pattern="[0-9\-\(\)\s\+]+"
-                    required>
+                <input 
+                    type="tel" 
+                    id="phone1" 
+                    name="phone1" 
+                    placeholder="+44 (0) 999 123 456"
+                    pattern="[0-9\-\(\)\s\+]+"
+                    required
+                >
                 <div class="form-help-text">Include area code</div>
             </div>
 
@@ -65,12 +79,17 @@
                 <label for="cvFile" class="file-upload-label">
                     <span class="file-upload-text">
                         📎 Click to upload or drag and drop
-                        <div style="font-size: 0.85rem; margin-top: 0.25rem; opacity: 0.8;">PDF, DOC, DOCX (Max 5MB)
-                        </div>
+                        <div style="font-size: 0.85rem; margin-top: 0.25rem; opacity: 0.8;">PDF, DOC, DOCX (Max 5MB)</div>
                     </span>
                 </label>
-                <input type="file" id="cvFile" name="cv" accept=".pdf,.doc,.docx" required
-                    aria-label="Upload your CV or resume">
+                <input 
+                    type="file" 
+                    id="cvFile" 
+                    name="cv" 
+                    accept=".pdf,.doc,.docx"
+                    required
+                    aria-label="Upload your CV or resume"
+                >
                 <div id="fileName" class="file-name" style="display: none;"></div>
                 <div class="form-help-text">Accepted formats: PDF, DOC, DOCX (Maximum 5MB)</div>
             </div>
@@ -88,12 +107,12 @@
         <div class="contact-info">
             <div class="contact-section phone-section">
                 <h3>Phone</h3>
-                <p>07999 123 456</p>
-                <p>07999 123 456</p>
+                <p>+44 (0) 999 123 456</p>
+                <p>+44 (0) 999 654 321</p>
             </div>
             <div class="contact-section email-section">
                 <h3>Email</h3>
-                <p>Email@keystonearchaeology.com</p>
+                <p>BlahBlah@keystonearchaeology.com</p>
             </div>
         </div>
     </footer>
@@ -103,7 +122,7 @@
         const fileInput = document.getElementById('cvFile');
         const fileNameDisplay = document.getElementById('fileName');
 
-        fileInput.addEventListener('change', function () {
+        fileInput.addEventListener('change', function() {
             if (this.files && this.files[0]) {
                 const file = this.files[0];
                 const fileName = file.name;
@@ -123,9 +142,9 @@
         });
 
         // Form submission
-        document.getElementById('jobApplicationForm').addEventListener('submit', function (e) {
+        document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
+            
             // Basic validation
             const fullName = document.getElementById('fullName').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -138,7 +157,7 @@
 
             // Success message
             alert('Thank you for your application! We will review your submission and contact you soon.');
-
+            
             // Reset form
             this.reset();
             fileNameDisplay.style.display = 'none';
@@ -147,5 +166,4 @@
 
     <script src="assets/JS/script-new.js"></script>
 </body>
-
 </html>

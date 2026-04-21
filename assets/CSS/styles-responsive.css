@@ -64,10 +64,17 @@ main {
     padding: 0 var(--spacing-md);
 }
 
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .logo a {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
     color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
@@ -206,21 +213,20 @@ main {
     width: auto;
     height: auto;
     max-width: 35vw;
-    max-height: 50px;
+    max-height: var(--navbar-height);
     object-fit: contain;
+    object-position: left center;
 }
 
 @media (min-width: 481px) {
     #keystoneimg {
         max-width: 30vw;
-        max-height: 50px;
     }
 }
 
 @media (min-width: 769px) {
     #keystoneimg {
         max-width: 200px;
-        max-height: 50px;
     }
 }
 
