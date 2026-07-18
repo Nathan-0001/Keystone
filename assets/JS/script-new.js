@@ -89,70 +89,125 @@ function initCarousel() {
     const track = document.querySelector('.carousel__track');
     if (!track) return;
 
-    const slides = Array.from(track.children);
-    if (!slides.length) return;
+    const origSlides = Array.from(track.children);
+    if (!origSlides.length) return;
 
     const prevButton = document.querySelector('.carousel__button--left');
     const nextButton = document.querySelector('.carousel__button--right');
+    const SLIDE_RATIO = 0.8;
+
+    // Clone first/last for seamless loop
+    const firstClone = origSlides[0].cloneNode(true);
+    const lastClone = origSlides[origSlides.length - 1].cloneNode(true);
+    firstClone.classList.add('first-clone');
+    lastClone.classList.add('last-clone');
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, origSlides[0]);
+
+    const slides = Array.from(track.children);
+    const realCount = origSlides.length;
+    let currentIndex = 0; // index into real slides
 
     function setSlidePositions() {
-        const slideWidth = track.getBoundingClientRect().width;
+        const containerWidth = track.parentElement.getBoundingClientRect().width;
+        const slideWidth = containerWidth * SLIDE_RATIO;
+        const centerOffset = (containerWidth - slideWidth) / 2;
+
         slides.forEach((slide, index) => {
-            slide.style.left = (slideWidth * index) + 'px';
+            slide.style.left = (centerOffset + slideWidth * index) + 'px';
             slide.style.position = 'absolute';
             slide.style.top = 0;
             slide.style.width = slideWidth + 'px';
         });
-        const current = track.querySelector('.current-slide') || slides[0];
-        moveToSlide(track, null, current, { skipClassToggle: true });
+
+        centerOnRealSlide(currentIndex, false);
     }
 
-    function moveToSlide(trackEl, currentSlide, targetSlide, opts = {}) {
-        if (!targetSlide) return;
-        const leftPx = targetSlide.style.left || '0px';
-        const left = parseFloat(leftPx);
-        trackEl.style.transform = 'translateX(-' + left + 'px)';
-        if (!opts.skipClassToggle) {
-            if (currentSlide) currentSlide.classList.remove('current-slide');
-            slides.forEach(s => s.classList.remove('current-slide'));
-            targetSlide.classList.add('current-slide');
+    function centerOnRealSlide(realIdx, animate) {
+        const targetSlide = slides[realIdx + 1]; // +1 because of prepended clone
+        const slideWidth = parseFloat(targetSlide.style.left) - parseFloat(slides[0].style.left);
+        const containerWidth = track.parentElement.getBoundingClientRect().width;
+        const slideW = parseFloat(targetSlide.style.width);
+        const centerOffset = (containerWidth - slideW) / 2;
+        const leftPx = parseFloat(targetSlide.style.left);
+
+        if (!animate) {
+            track.style.transition = 'none';
+        } else {
+            track.style.transition = '';
         }
+        track.style.transform = 'translateX(-' + (leftPx - centerOffset) + 'px)';
+
+        // Update classes on real slides only
+        const realSlides = slides.filter(s => !s.classList.contains('first-clone') && !s.classList.contains('last-clone'));
+        realSlides.forEach((s, i) => {
+            s.classList.remove('current-slide');
+            s.classList.remove('carousel__slide--adjacent');
+        });
+        realSlides[realIdx].classList.add('current-slide');
+
+        const dist = (a, b) => Math.min(Math.abs(a - b), realCount - Math.abs(a - b));
+        realSlides.forEach((s, i) => {
+            if (dist(i, realIdx) === 1) {
+                s.classList.add('carousel__slide--adjacent');
+            }
+        });
+
+        if (!animate) {
+            // Force reflow then re-enable transition
+            track.offsetHeight;
+            track.style.transition = '';
+        }
+    }
+
+    function goToRealSlide(realIdx) {
+        currentIndex = realIdx;
+        centerOnRealSlide(realIdx, true);
+
+        // After transition ends, check if on a clone and snap to real
+        track.addEventListener('transitionend', function handler() {
+            track.removeEventListener('transitionend', handler);
+            const displayed = track.querySelector('.current-slide');
+            if (displayed && displayed.classList.contains('first-clone')) {
+                currentIndex = 0;
+                centerOnRealSlide(0, false);
+            } else if (displayed && displayed.classList.contains('last-clone')) {
+                currentIndex = realCount - 1;
+                centerOnRealSlide(realCount - 1, false);
+            }
+        });
     }
 
     if (prevButton) {
         prevButton.addEventListener('click', () => {
-            const current = track.querySelector('.current-slide') || slides[0];
-            const prev = current.previousElementSibling || slides[slides.length - 1];
-            moveToSlide(track, current, prev);
+            currentIndex = (currentIndex - 1 + realCount) % realCount;
+            goToRealSlide(currentIndex);
             resetAutoSlide();
         });
     }
 
     if (nextButton) {
         nextButton.addEventListener('click', () => {
-            const current = track.querySelector('.current-slide') || slides[0];
-            const next = current.nextElementSibling || slides[0];
-            moveToSlide(track, current, next);
+            currentIndex = (currentIndex + 1) % realCount;
+            goToRealSlide(currentIndex);
             resetAutoSlide();
         });
     }
 
     let autoSlideTimer = setInterval(() => {
-        const current = track.querySelector('.current-slide') || slides[0];
-        const next = current.nextElementSibling || slides[0];
-        moveToSlide(track, current, next);
+        currentIndex = (currentIndex + 1) % realCount;
+        goToRealSlide(currentIndex);
     }, 6000);
 
     function resetAutoSlide() {
         clearInterval(autoSlideTimer);
         autoSlideTimer = setInterval(() => {
-            const current = track.querySelector('.current-slide') || slides[0];
-            const next = current.nextElementSibling || slides[0];
-            moveToSlide(track, current, next);
+            currentIndex = (currentIndex + 1) % realCount;
+            goToRealSlide(currentIndex);
         }, 6000);
     }
 
-    if (!track.querySelector('.current-slide')) slides[0].classList.add('current-slide');
+    centerOnRealSlide(0, false);
     setSlidePositions();
     window.addEventListener('resize', () => {
         window.requestAnimationFrame(setSlidePositions);
@@ -175,14 +230,12 @@ function initCarousel() {
     container.addEventListener('touchend', () => {
         const threshold = 50;
         if (touchDeltaX < -threshold) {
-            const current = track.querySelector('.current-slide') || slides[0];
-            const next = current.nextElementSibling || slides[0];
-            moveToSlide(track, current, next);
+            currentIndex = (currentIndex + 1) % realCount;
+            goToRealSlide(currentIndex);
             resetAutoSlide();
         } else if (touchDeltaX > threshold) {
-            const current = track.querySelector('.current-slide') || slides[0];
-            const prev = current.previousElementSibling || slides[slides.length - 1];
-            moveToSlide(track, current, prev);
+            currentIndex = (currentIndex - 1 + realCount) % realCount;
+            goToRealSlide(currentIndex);
             resetAutoSlide();
         }
     });

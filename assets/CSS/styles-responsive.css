@@ -279,12 +279,13 @@ header.keystone {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    border-radius: 12px;
 }
 
 .carousel__track-container {
     height: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .carousel__track {
@@ -298,9 +299,17 @@ header.keystone {
 
 .carousel__slide {
     position: absolute;
-    width: 100%;
     height: 100%;
-    top: 0;
+    transition: opacity 800ms ease;
+    opacity: 0.3;
+}
+
+.carousel__slide.current-slide {
+    opacity: 1;
+}
+
+.carousel__slide.carousel__slide--adjacent {
+    opacity: 0.6;
 }
 
 /* Touch-friendly carousel buttons */
