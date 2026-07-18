@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
         "Achaeology"
-    ]
+    ],
+    "snyk.advanced.organization": "a2dfdebe-1139-44b2-ba6a-b9625a2f27a4",
+    "snyk.advanced.autoSelectOrganization": true
 }

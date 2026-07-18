@@ -1,12 +1,12 @@
 /* KEYSTONE ARCHAEOLOGY - MOBILE FIRST RESPONSIVE CSS */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Train+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* ===== CSS VARIABLES - MOBILE FIRST ===== */
 :root {
-    --color1: #cfe5f0;
+    --color1: #d4edda;
     --color2: #44e6c2;
     --color3: #ff5722;
-    --color4: #2196f3;
+    --color4: #2e7d32;
     --color5: #d0d0d0;
     --navbar-height: 80px;
     --text-color: #333;
@@ -165,7 +165,7 @@ main {
 
 .nav-menu a:hover,
 .nav-menu a:focus {
-    background: rgba(68, 230, 194, 0.15);
+    background: rgba(46, 125, 50, 0.15);
     color: var(--color4);
 }
 
@@ -243,26 +243,26 @@ main {
 header.keystone {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 325px;
     overflow: hidden;
     margin-bottom: var(--spacing-lg);
 }
 
 @media (min-width: 481px) {
     header.keystone {
-        height: 340px;
+        height: 445px;
     }
 }
 
 @media (min-width: 769px) {
     header.keystone {
-        height: 450px;
+        height: 575px;
     }
 }
 
 @media (min-width: 1025px) {
     header.keystone {
-        height: 500px;
+        height: 650px;
     }
 }
 
@@ -278,6 +278,7 @@ header.keystone {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .carousel__track-container {
@@ -292,7 +293,7 @@ header.keystone {
     list-style: none;
     position: relative;
     height: 100%;
-    transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 1600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel__slide {
@@ -361,7 +362,7 @@ header.keystone {
 }
 
 .keystone-box h1 {
-    font-family: 'Train One', sans-serif;
+    font-family: 'Agency FB', sans-serif;
     font-size: 1.5rem;
     margin-bottom: var(--spacing-xs);
     line-height: 1.2;
@@ -463,7 +464,7 @@ header.keystone {
 }
 
 .about-content h2 {
-    font-family: 'Train One', sans-serif;
+    font-family: 'Agency FB', sans-serif;
     font-size: 1.25rem;
     margin-bottom: var(--spacing-sm);
 }
@@ -472,6 +473,17 @@ header.keystone {
     line-height: 1.5;
     font-weight: 500;
     font-size: 0.9rem;
+}
+
+.what-we-do-list {
+    font-size: 0.85rem;
+    padding-left: 2rem;
+    list-style: disc;
+}
+
+.what-we-do-list li {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.4;
 }
 
 @media (min-width: 481px) {
@@ -516,36 +528,61 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 footer h1 {
     font-size: 1.5rem;
     margin-bottom: var(--spacing-lg);
-    font-family: 'Train One', sans-serif;
+    font-family: 'Agency FB', sans-serif;
     width: 100%;
     text-align: center;
 }
 
-.contact-info {
+.footer-content {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
-    width: 100%;
     align-items: center;
-}
-
-.contact-section {
+    gap: var(--spacing-lg);
     text-align: center;
 }
 
-.contact-section h3 {
+.footer-email {
     font-size: 1rem;
-    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+    font-weight: 500;
+    margin: 0;
 }
 
-.contact-section p {
-    margin: 0 0 var(--spacing-md) 0;
+.footer-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.footer-cta p {
+    margin: 0;
     font-weight: 500;
+}
+
+.footer-btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--color4);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+    min-height: 44px;
+    min-width: 44px;
+    text-align: center;
+}
+
+.footer-btn:hover {
+    background: #1b5e20;
+    box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
 }
 
 footer p {
@@ -553,39 +590,26 @@ footer p {
     font-weight: 500;
 }
 
-@media (min-width: 769px) {
-    footer {
-        align-items: flex-start;
-        padding: var(--spacing-xl) var(--spacing-xl);
-        max-width: 90%;
-    }
-
-    footer h1 {
-        width: 100%;
-    }
-
-    .contact-info {
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-        align-items: flex-start;
-        gap: var(--spacing-xl);
-    }
-
-    .email-section {
-        flex: 1;
-        text-align: right;
-    }
-
-    .phone-section {
-        flex: 1;
-        text-align: left;
-    }
-}
-
 /* ===== UTILITY CLASSES ===== */
 .nothing {
     /* Placeholder for future content */
+}
+
+.director-name {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.form-title {
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+.file-upload-hint {
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    opacity: 0.8;
 }
 
 /* ===== ACCESSIBILITY ===== */

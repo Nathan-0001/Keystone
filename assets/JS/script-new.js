@@ -117,43 +117,74 @@ function initCarousel() {
             slides.forEach(s => s.classList.remove('current-slide'));
             targetSlide.classList.add('current-slide');
         }
-        updateArrows(slides, prevButton, nextButton, slides.indexOf(targetSlide));
-    }
-
-    function updateArrows(slidesArr, prevBtn, nextBtn, targetIndex) {
-        if (!prevBtn || !nextBtn) return;
-        if (targetIndex <= 0) {
-            prevBtn.classList.add('is-hidden');
-            nextBtn.classList.remove('is-hidden');
-        } else if (targetIndex >= slidesArr.length - 1) {
-            nextBtn.classList.add('is-hidden');
-            prevBtn.classList.remove('is-hidden');
-        } else {
-            prevBtn.classList.remove('is-hidden');
-            nextBtn.classList.remove('is-hidden');
-        }
     }
 
     if (prevButton) {
         prevButton.addEventListener('click', () => {
             const current = track.querySelector('.current-slide') || slides[0];
-            const prev = current.previousElementSibling || slides[0];
+            const prev = current.previousElementSibling || slides[slides.length - 1];
             moveToSlide(track, current, prev);
+            resetAutoSlide();
         });
     }
 
     if (nextButton) {
         nextButton.addEventListener('click', () => {
             const current = track.querySelector('.current-slide') || slides[0];
-            const next = current.nextElementSibling || slides[slides.length - 1];
+            const next = current.nextElementSibling || slides[0];
             moveToSlide(track, current, next);
+            resetAutoSlide();
         });
+    }
+
+    let autoSlideTimer = setInterval(() => {
+        const current = track.querySelector('.current-slide') || slides[0];
+        const next = current.nextElementSibling || slides[0];
+        moveToSlide(track, current, next);
+    }, 6000);
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = setInterval(() => {
+            const current = track.querySelector('.current-slide') || slides[0];
+            const next = current.nextElementSibling || slides[0];
+            moveToSlide(track, current, next);
+        }, 6000);
     }
 
     if (!track.querySelector('.current-slide')) slides[0].classList.add('current-slide');
     setSlidePositions();
     window.addEventListener('resize', () => {
         window.requestAnimationFrame(setSlidePositions);
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchDeltaX = 0;
+    const container = document.querySelector('.carousel__track-container');
+
+    container.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchDeltaX = 0;
+    }, { passive: true });
+
+    container.addEventListener('touchmove', (e) => {
+        touchDeltaX = e.touches[0].clientX - touchStartX;
+    }, { passive: true });
+
+    container.addEventListener('touchend', () => {
+        const threshold = 50;
+        if (touchDeltaX < -threshold) {
+            const current = track.querySelector('.current-slide') || slides[0];
+            const next = current.nextElementSibling || slides[0];
+            moveToSlide(track, current, next);
+            resetAutoSlide();
+        } else if (touchDeltaX > threshold) {
+            const current = track.querySelector('.current-slide') || slides[0];
+            const prev = current.previousElementSibling || slides[slides.length - 1];
+            moveToSlide(track, current, prev);
+            resetAutoSlide();
+        }
     });
 }
 

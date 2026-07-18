@@ -22,7 +22,7 @@
         
         <!-- Application Form -->
         <form class="application-form" id="jobApplicationForm" method="POST" enctype="multipart/form-data">
-            <h2 style="margin-bottom: var(--spacing-lg); color: var(--text-color); font-size: 1.5rem;">Application Form</h2>
+            <h2 class="form-title">Application Form</h2>
             
             <!-- Full Name -->
             <div class="form-group">
@@ -79,7 +79,7 @@
                 <label for="cvFile" class="file-upload-label">
                     <span class="file-upload-text">
                         📎 Click to upload or drag and drop
-                        <div style="font-size: 0.85rem; margin-top: 0.25rem; opacity: 0.8;">PDF, DOC, DOCX (Max 5MB)</div>
+                        <div class="file-upload-hint">PDF, DOC, DOCX (Max 5MB)</div>
                     </span>
                 </label>
                 <input 
@@ -90,8 +90,22 @@
                     required
                     aria-label="Upload your CV or resume"
                 >
-                <div id="fileName" class="file-name" style="display: none;"></div>
+                <div id="fileName" class="file-name"></div>
                 <div class="form-help-text">Accepted formats: PDF, DOC, DOCX (Maximum 5MB)</div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="form-group">
+                <label for="additionalInfo">
+                    Additional Information (Optional)
+                </label>
+                <textarea 
+                    id="additionalInfo" 
+                    name="additionalInfo" 
+                    placeholder="Any extra information you'd like to share..."
+                    rows="4"
+                ></textarea>
+                <div class="form-help-text">Optional - include anything else relevant to your application</div>
             </div>
 
             <!-- Submit Button -->
@@ -104,15 +118,11 @@
     <!-- Footer -->
     <footer id="Contact">
         <h1>Contact Us</h1>
-        <div class="contact-info">
-            <div class="contact-section phone-section">
-                <h3>Phone</h3>
-                <p>+44 (0) 999 123 456</p>
-                <p>+44 (0) 999 654 321</p>
-            </div>
-            <div class="contact-section email-section">
-                <h3>Email</h3>
-                <p>BlahBlah@keystonearchaeology.com</p>
+        <div class="footer-content">
+            <p class="footer-email">keystonearchaeologyltd@outlook.com</p>
+            <div class="footer-cta">
+                <p>Interested in joining our team?</p>
+                <a href="apply.html" class="footer-btn">Join Us</a>
             </div>
         </div>
     </footer>
