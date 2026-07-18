@@ -443,24 +443,22 @@ header.keystone {
 
 .about-block {
     background: var(--color4);
-    border-radius: 8px;
-    padding: var(--spacing-sm);
+    border-radius: 12px;
+    padding: 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     color: white;
+    overflow: hidden;
 }
 
 .about-block img {
     width: 100%;
     height: auto;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: var(--spacing-sm);
     display: block;
+    border-radius: 12px;
 }
 
 .about-content {
-    padding: var(--spacing-xs);
+    padding: var(--spacing-sm);
 }
 
 .about-content h2 {
@@ -487,9 +485,6 @@ header.keystone {
 }
 
 @media (min-width: 481px) {
-    .about-block img {
-        max-height: 250px;
-    }
     .about-content h2 {
         font-size: 1.4rem;
     }
@@ -508,10 +503,6 @@ header.keystone {
     .about-block {
         flex: 1;
         padding: var(--spacing-md);
-    }
-    
-    .about-block img {
-        max-height: 300px;
     }
 }
 
