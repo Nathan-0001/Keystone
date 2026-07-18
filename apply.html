@@ -21,7 +21,10 @@
         </div>
         
         <!-- Application Form -->
-        <form class="application-form" id="jobApplicationForm" method="POST" enctype="multipart/form-data">
+        <form class="application-form" id="jobApplicationForm" action="https://formsubmit.co/keystonearchaeologyltd@outlook.com" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_subject" value="New Application - Keystone Archaeology">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
             <h2 class="form-title">Application Form</h2>
             
             <!-- Full Name -->
@@ -57,13 +60,13 @@
 
             <!-- Phone Number 1 -->
             <div class="form-group">
-                <label for="phone1">
+                <label for="phone">
                     Phone Number <span class="required">*</span>
                 </label>
                 <input 
                     type="tel" 
-                    id="phone1" 
-                    name="phone1" 
+                    id="phone" 
+                    name="phone" 
                     placeholder="+44 (0) 999 123 456"
                     pattern="[0-9\-\(\)\s\+]+"
                     required
@@ -81,15 +84,15 @@
                         📎 Click to upload or drag and drop
                         <div class="file-upload-hint">PDF, DOC, DOCX (Max 5MB)</div>
                     </span>
+                    <input 
+                        type="file" 
+                        id="cvFile" 
+                        name="cv" 
+                        accept=".pdf,.doc,.docx"
+                        required
+                        aria-label="Upload your CV or resume"
+                    >
                 </label>
-                <input 
-                    type="file" 
-                    id="cvFile" 
-                    name="cv" 
-                    accept=".pdf,.doc,.docx"
-                    required
-                    aria-label="Upload your CV or resume"
-                >
                 <div id="fileName" class="file-name"></div>
                 <div class="form-help-text">Accepted formats: PDF, DOC, DOCX (Maximum 5MB)</div>
             </div>
@@ -136,9 +139,8 @@
             if (this.files && this.files[0]) {
                 const file = this.files[0];
                 const fileName = file.name;
-                const fileSize = (file.size / 1024 / 1024).toFixed(2); // Convert to MB
+                const fileSize = (file.size / 1024 / 1024).toFixed(2);
 
-                // Check file size (5MB max)
                 if (file.size > 5 * 1024 * 1024) {
                     alert('File size exceeds 5MB limit. Please choose a smaller file.');
                     this.value = '';
@@ -146,31 +148,38 @@
                     return;
                 }
 
-                fileNameDisplay.textContent = `✓ ${fileName} (${fileSize}MB)`;
+                fileNameDisplay.textContent = '\u2713 ' + fileName + ' (' + fileSize + 'MB)';
                 fileNameDisplay.style.display = 'block';
             }
         });
 
-        // Form submission
-        document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
+        // Submit via fetch so we control the redirect
+        document.getElementById('jobApplicationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Basic validation
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const cvFile = document.getElementById('cvFile').files[0];
+            const form = e.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
 
-            if (!fullName || !email || !phone1 || !cvFile) {
-                alert('Please fill in all required fields.');
-                return;
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    window.location.href = 'submitted.html';
+                } else {
+                    alert('Something went wrong. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Application';
+                }
+            } catch (err) {
+                alert('Something went wrong. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
             }
-
-            // Success message
-            alert('Thank you for your application! We will review your submission and contact you soon.');
-            
-            // Reset form
-            this.reset();
-            fileNameDisplay.style.display = 'none';
         });
     </script>
 
