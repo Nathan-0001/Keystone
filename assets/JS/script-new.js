@@ -1,3 +1,11 @@
+// Send Netlify Identity token links (invite/recovery/confirmation) to /admin/
+(function () {
+    var tokenPattern = /#(?:invite_token|confirmation_token|recovery_token|email_change_token|access_token)=/;
+    if (tokenPattern.test(window.location.hash) && !/\/admin\/?$/.test(window.location.pathname)) {
+        window.location.replace('/admin/' + window.location.hash);
+    }
+})();
+
 // Load HTML partials (header/footer)
 async function loadPartial(selector, url) {
     const el = document.querySelector(selector);
