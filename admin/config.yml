@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/IMG"
+public_folder: "assets/IMG"
+
+collections:
+  - name: "work"
+    label: "Current Work"
+    files:
+      - file: "data/current-work.json"
+        label: "Projects"
+        name: "projects"
+        format: "json"
+        fields:
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            allow_add: true
+            collapsed: false
+            fields:
+              - { label: "Location", name: "location", widget: "string", required: true }
+              - { label: "Subheading", name: "subheading", widget: "string", required: false }
+              - { label: "Start Date", name: "startDate", widget: "string", required: false }
+              - { label: "End Date", name: "endDate", widget: "string", required: false }
+              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - { label: "Google Maps Link", name: "mapLink", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
