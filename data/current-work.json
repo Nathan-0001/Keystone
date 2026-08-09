@@ -1,3 +1,12 @@
 {
-    "projects": []
+  "projects": [
+    {
+      "location": "Bicester",
+      "startDate": "09/08/2026",
+      "endDate": "27/09/2026",
+      "mapLink": "https://maps.app.goo.gl/otV1BBECHxCyqkPt6",
+      "description": "This is a test\n",
+      "subheading": "Digging site"
+    }
+  ]
 }
