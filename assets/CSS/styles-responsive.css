@@ -530,7 +530,7 @@ footer {
     text-align: center;
 }
 
-footer h1 {
+footer h2 {
     font-size: 1.5rem;
     margin-bottom: var(--spacing-lg);
     font-family: 'Agency FB', sans-serif;
