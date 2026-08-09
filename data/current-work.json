@@ -7,15 +7,8 @@
       "mapLink": "https://maps.app.goo.gl/otV1BBECHxCyqkPt6",
       "description": "This is a test\n",
       "subheading": "Digging site",
-      "photo": ""
-    },
-    {
-      "location": "Warwick",
-      "subheading": "asda",
-      "startDate": "dasda",
-      "endDate": "asda",
-      "mapLink": "dasda",
-      "description": "dafegf wf"
+      "photo": "",
+      "mapEmbed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19694.051371918613!2d-1.1749563750633576!3d51.90190910194086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c32cd3273725%3A0xb3ce1aea8934b1a1!2sBicester%2C%20UK!5e0!3m2!1sen!2ses!4v1786280784312!5m2!1sen!2ses\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe>"
     }
   ]
 }
