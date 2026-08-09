@@ -18,17 +18,17 @@
         const card = document.createElement('article');
         card.className = 'work-card' + (index % 2 === 1 ? ' work-card--flipped' : '');
 
-        const photoUrl = project.photo ? escapeHtml(project.photo) : '';
+        const mapEmbed = project.mapEmbed ? escapeHtml(project.mapEmbed) : '';
 
         const cardInner = document.createElement('div');
         cardInner.className = 'work-card__inner';
 
         const media = document.createElement('div');
         media.className = 'work-card__media';
-        if (photoUrl) {
-            media.innerHTML = '<img class="work-card__image" src="' + photoUrl + '" alt="' + escapeHtml(project.location) + '">';
+        if (mapEmbed) {
+            media.innerHTML = '<iframe class="work-card__map-frame" src="' + mapEmbed + '" title="Map of ' + escapeHtml(project.location) + '" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>';
         } else {
-            media.innerHTML = '<div class="work-card__placeholder">No photo yet</div>';
+            media.innerHTML = '<div class="work-card__placeholder">No map yet</div>';
         }
 
         const body = document.createElement('div');
@@ -39,17 +39,11 @@
             datesHtml = '<p class="work-card__dates">' + escapeHtml(project.startDate || 'TBC') + ' &ndash; ' + escapeHtml(project.endDate || 'Present') + '</p>';
         }
 
-        let mapHtml = '';
-        if (project.mapLink) {
-            mapHtml = '<a class="work-card__map" href="' + escapeHtml(project.mapLink) + '" target="_blank" rel="noopener">View on Google Maps</a>';
-        }
-
         body.innerHTML =
             '<h2 class="work-card__title">' + escapeHtml(project.location) + '</h2>' +
             (project.subheading ? '<h3 class="work-card__subheading">' + escapeHtml(project.subheading) + '</h3>' : '') +
             datesHtml +
-            (project.description ? '<p class="work-card__description">' + escapeHtml(project.description) + '</p>' : '') +
-            mapHtml;
+            (project.description ? '<p class="work-card__description">' + escapeHtml(project.description) + '</p>' : '');
 
         cardInner.appendChild(media);
         cardInner.appendChild(body);
