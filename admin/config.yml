@@ -16,7 +16,7 @@ backend:
 
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
-site_url: https://keystone-archaeology.netlify.app
+site_url: https://www.keystone-archaeology.com
 
 media_folder: "assets/IMG"
 public_folder: "assets/IMG"

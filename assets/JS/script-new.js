@@ -107,107 +107,147 @@ function initCarousel() {
     const slides = Array.from(track.children);
     const realCount = origSlides.length;
     let currentIndex = 0; // index into real slides
+    let transitioning = false;
+    let pendingDisplayIdx = null; // clone target while wrapping
 
-    function setSlidePositions() {
-        const containerWidth = track.parentElement.getBoundingClientRect().width;
-        const slideWidth = containerWidth * SLIDE_RATIO;
-        const centerOffset = (containerWidth - slideWidth) / 2;
-
-        slides.forEach((slide, index) => {
-            slide.style.left = (centerOffset + slideWidth * index) + 'px';
-            slide.style.position = 'absolute';
-            slide.style.top = 0;
-            slide.style.width = slideWidth + 'px';
-        });
-
-        centerOnRealSlide(currentIndex, false);
+    function containerWidth() {
+        return track.parentElement.getBoundingClientRect().width;
     }
 
-    function centerOnRealSlide(realIdx, animate) {
-        const targetSlide = slides[realIdx + 1]; // +1 because of prepended clone
-        const slideWidth = parseFloat(targetSlide.style.left) - parseFloat(slides[0].style.left);
-        const containerWidth = track.parentElement.getBoundingClientRect().width;
-        const slideW = parseFloat(targetSlide.style.width);
-        const centerOffset = (containerWidth - slideW) / 2;
-        const leftPx = parseFloat(targetSlide.style.left);
+    function setSlidePositions() {
+        const cw = containerWidth();
+        const sWidth = cw * SLIDE_RATIO;
+        const centerOffset = (cw - sWidth) / 2;
+
+        slides.forEach((slide, index) => {
+            slide.style.left = (centerOffset + sWidth * index) + 'px';
+            slide.style.position = 'absolute';
+            slide.style.top = 0;
+            slide.style.width = sWidth + 'px';
+        });
+
+        if (transitioning && pendingDisplayIdx !== null) {
+            // Finish an in-flight wrap instantly on resize so state stays consistent
+            pendingTransition = null;
+            snapToDisplay(pendingDisplayIdx);
+            transitioning = false;
+            pendingDisplayIdx = null;
+        } else {
+            snapToDisplay(currentIndex + 1);
+        }
+    }
+
+    function setTransform(leftPx, animate) {
+        const sWidth = containerWidth() * SLIDE_RATIO;
+        const centerOffset = (containerWidth() - sWidth) / 2;
+        const tx = -(leftPx - centerOffset);
 
         if (!animate) {
             track.style.transition = 'none';
+            track.style.transform = 'translateX(' + tx + 'px)';
+            track.offsetHeight; // force reflow
+            track.style.transition = '';
         } else {
-            track.style.transition = '';
-        }
-        track.style.transform = 'translateX(-' + (leftPx - centerOffset) + 'px)';
-
-        // Update classes on real slides only
-        const realSlides = slides.filter(s => !s.classList.contains('first-clone') && !s.classList.contains('last-clone'));
-        realSlides.forEach((s, i) => {
-            s.classList.remove('current-slide');
-            s.classList.remove('carousel__slide--adjacent');
-        });
-        realSlides[realIdx].classList.add('current-slide');
-
-        const dist = (a, b) => Math.min(Math.abs(a - b), realCount - Math.abs(a - b));
-        realSlides.forEach((s, i) => {
-            if (dist(i, realIdx) === 1) {
-                s.classList.add('carousel__slide--adjacent');
-            }
-        });
-
-        if (!animate) {
-            // Force reflow then re-enable transition
-            track.offsetHeight;
-            track.style.transition = '';
+            track.style.transform = 'translateX(' + tx + 'px)';
         }
     }
 
-    function goToRealSlide(realIdx) {
-        currentIndex = realIdx;
-        centerOnRealSlide(realIdx, true);
-
-        // After transition ends, check if on a clone and snap to real
-        track.addEventListener('transitionend', function handler() {
-            track.removeEventListener('transitionend', handler);
-            const displayed = track.querySelector('.current-slide');
-            if (displayed && displayed.classList.contains('first-clone')) {
-                currentIndex = 0;
-                centerOnRealSlide(0, false);
-            } else if (displayed && displayed.classList.contains('last-clone')) {
-                currentIndex = realCount - 1;
-                centerOnRealSlide(realCount - 1, false);
-            }
+    function updateClasses(displayIdx) {
+        slides.forEach(s => {
+            s.classList.remove('current-slide');
+            s.classList.remove('carousel__slide--adjacent');
         });
+        slides[displayIdx].classList.add('current-slide');
+        if (displayIdx > 0) slides[displayIdx - 1].classList.add('carousel__slide--adjacent');
+        if (displayIdx < slides.length - 1) slides[displayIdx + 1].classList.add('carousel__slide--adjacent');
+    }
+
+    function animateToDisplay(displayIdx) {
+        setTransform(parseFloat(slides[displayIdx].style.left), true);
+        updateClasses(displayIdx);
+    }
+
+    function snapToDisplay(displayIdx) {
+        setTransform(parseFloat(slides[displayIdx].style.left), false);
+        updateClasses(displayIdx);
+    }
+
+    // Single persistent listener so no stale handlers survive interrupted wraps
+    let pendingTransition = null;
+    track.addEventListener('transitionend', (e) => {
+        if (e.target !== track || e.propertyName !== 'transform') return;
+        if (pendingTransition) {
+            const cb = pendingTransition;
+            pendingTransition = null;
+            cb();
+        }
+    });
+
+    function afterTrackTransition(cb) {
+        pendingTransition = cb;
+    }
+
+    function nextSlide() {
+        if (transitioning) return;
+        if (currentIndex === realCount - 1) {
+            transitioning = true;
+            pendingDisplayIdx = realCount + 1;
+            currentIndex = 0;
+            animateToDisplay(pendingDisplayIdx); // animate onto first clone
+            afterTrackTransition(() => {
+                snapToDisplay(1); // snap to real first slide
+                transitioning = false;
+                pendingDisplayIdx = null;
+            });
+        } else {
+            currentIndex++;
+            animateToDisplay(currentIndex + 1);
+        }
+    }
+
+    function prevSlide() {
+        if (transitioning) return;
+        if (currentIndex === 0) {
+            transitioning = true;
+            pendingDisplayIdx = 0;
+            currentIndex = realCount - 1;
+            animateToDisplay(pendingDisplayIdx); // animate onto last clone
+            afterTrackTransition(() => {
+                snapToDisplay(realCount); // snap to real last slide
+                transitioning = false;
+                pendingDisplayIdx = null;
+            });
+        } else {
+            currentIndex--;
+            animateToDisplay(currentIndex + 1);
+        }
     }
 
     if (prevButton) {
         prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + realCount) % realCount;
-            goToRealSlide(currentIndex);
+            prevSlide();
             resetAutoSlide();
         });
     }
 
     if (nextButton) {
         nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % realCount;
-            goToRealSlide(currentIndex);
+            nextSlide();
             resetAutoSlide();
         });
     }
 
     let autoSlideTimer = setInterval(() => {
-        currentIndex = (currentIndex + 1) % realCount;
-        goToRealSlide(currentIndex);
+        nextSlide();
     }, 6000);
 
     function resetAutoSlide() {
         clearInterval(autoSlideTimer);
         autoSlideTimer = setInterval(() => {
-            currentIndex = (currentIndex + 1) % realCount;
-            goToRealSlide(currentIndex);
+            nextSlide();
         }, 6000);
     }
 
-    centerOnRealSlide(0, false);
     setSlidePositions();
     window.addEventListener('resize', () => {
         window.requestAnimationFrame(setSlidePositions);
@@ -230,12 +270,10 @@ function initCarousel() {
     container.addEventListener('touchend', () => {
         const threshold = 50;
         if (touchDeltaX < -threshold) {
-            currentIndex = (currentIndex + 1) % realCount;
-            goToRealSlide(currentIndex);
+            nextSlide();
             resetAutoSlide();
         } else if (touchDeltaX > threshold) {
-            currentIndex = (currentIndex - 1 + realCount) % realCount;
-            goToRealSlide(currentIndex);
+            prevSlide();
             resetAutoSlide();
         }
     });

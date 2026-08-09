@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Keystone Archaeology - Your gateway to the past">
     <title>Keystone Archaeology</title>
-    <link rel="stylesheet" href="assets/CSS/styles-responsive.css?v=1.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="assets/CSS/styles-responsive.css?v=1.2">
 </head>
 
 <body>
@@ -23,19 +26,19 @@
                 </button>
                 <ul class="carousel__track">
                     <li class="carousel__slide current-slide"><img class="carousel__image"
-                            src="assets/IMG/cup.jpg" alt="Archaeological artifact - Cup"></li>
+                            src="assets/IMG/cup.jpg" alt="Archaeological artifact - Cup" fetchpriority="high"></li>
                     <li class="carousel__slide"><img class="carousel__image" src="assets/IMG/Long-dig.jpeg"
-                            alt="Archaeological excavation - Long dig"></li>
+                            alt="Archaeological excavation - Long dig" loading="lazy" decoding="async"></li>
                     <li class="carousel__slide"><img class="carousel__image" src="assets/IMG/horse.jpg"
-                            alt="Archaeological artifact - Horse"></li>
+                            alt="Archaeological artifact - Horse" loading="lazy" decoding="async"></li>
                     <li class="carousel__slide"><img class="carousel__image" src="assets/IMG/coins.jpeg"
-                            alt="Archaeological artifact - Coins"></li>
+                            alt="Archaeological artifact - Coins" loading="lazy" decoding="async"></li>
                     <li class="carousel__slide"><img class="carousel__image" src="assets/IMG/jar.jpg"
-                            alt="Archaeological artifact - Jar"></li>
+                            alt="Archaeological artifact - Jar" loading="lazy" decoding="async"></li>
                     <li class="carousel__slide"><img class="carousel__image" src="assets/IMG/plate.jpeg"
-                            alt="Archaeological artifact - Plate"></li>
+                            alt="Archaeological artifact - Plate" loading="lazy" decoding="async"></li>
                     <li class="carousel__slide"><img class="carousel__image" src="assets/IMG/round hole.jpeg"
-                            alt="Archaeological site - Round hole"></li>
+                            alt="Archaeological site - Round hole" loading="lazy" decoding="async"></li>
                 </ul>
                 <button class="carousel__button carousel__button--right" title="Next slide" aria-label="Next image">
                     <img src="assets/IMG/right.png" alt="">
@@ -58,7 +61,7 @@
     <!-- About Sections -->
     <div class="about-sections">
         <div class="about-block">
-            <img src="assets/IMG/truck.jpeg" alt="Who We Are">
+            <img src="assets/IMG/truck.jpeg" alt="Who We Are" loading="lazy" decoding="async">
             <div class="about-content">
                 <h2>Who We Are</h2>
                 <p>Founded in September 2024 by Directors <span class="director-name">Nicholas Dugan</span>
@@ -80,7 +83,7 @@
             </div>
         </div>
         <div class="about-block">
-            <img src="assets/IMG/hole.jpg" alt="What We Do">
+            <img src="assets/IMG/hole.jpg" alt="What We Do" loading="lazy" decoding="async">
             <div class="about-content">
                 <h2>What We Do</h2>
                 <p>Keystone Archaeology provides experienced personnel for all aspects of archaeological fieldwork.
