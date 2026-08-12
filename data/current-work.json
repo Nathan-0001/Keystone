@@ -63,6 +63,14 @@
       "endDate": "To be determined",
       "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d446837.8387979205!2d0.25807017251417713!3d51.77959467324784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d85627fe870dd3%3A0x4257cb3847ee5079!2sEssex!5e0!3m2!1sen!2suk!4v1786543956973!5m2!1sen!2suk",
       "description": "Mid-sized evaluation"
+    },
+    {
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d442633.715460669!2d-0.418195307651105!3d52.20288731222019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877c44ccc9f2baf%3A0x567ccebe8196c7e8!2sSt%20Neots%2C%20St.%20Neots!5e0!3m2!1sen!2suk!4v1786545543136!5m2!1sen!2suk",
+      "location": "St Neots",
+      "subheading": "Mitigation",
+      "startDate": "24/08/2026",
+      "endDate": "11/09/2026",
+      "description": "Romano-British excavation "
     }
   ]
 }
