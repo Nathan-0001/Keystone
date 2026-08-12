@@ -55,6 +55,14 @@
       "endDate": "To be determined ",
       "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d159067.63735851957!2d-2.755526681789243!3d51.4685873307085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871836681b3d861%3A0x8ee4b22e4b9ad71f!2sBristol!5e0!3m2!1sen!2suk!4v1786543799083!5m2!1sen!2suk",
       "description": "Mid-sized evaluation "
+    },
+    {
+      "location": "Essex",
+      "subheading": "Evaluation ",
+      "startDate": "24/08/2026",
+      "endDate": "To be determined",
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d446837.8387979205!2d0.25807017251417713!3d51.77959467324784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d85627fe870dd3%3A0x4257cb3847ee5079!2sEssex!5e0!3m2!1sen!2suk!4v1786543956973!5m2!1sen!2suk",
+      "description": "Mid-sized evaluation"
     }
   ]
 }
