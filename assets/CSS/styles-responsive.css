@@ -531,9 +531,12 @@ footer {
 }
 
 footer h2 {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
     margin-bottom: var(--spacing-lg);
     font-family: 'Agency FB', sans-serif;
+    font-weight: 700;
+    color: var(--color4);
+    letter-spacing: 0.5px;
     width: 100%;
     text-align: center;
 }
@@ -544,6 +547,45 @@ footer h2 {
     align-items: center;
     gap: var(--spacing-lg);
     text-align: center;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.footer-column--center {
+    gap: var(--spacing-xs);
+}
+
+@media (min-width: 769px) {
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        gap: 4rem;
+        text-align: left;
+    }
+
+    .footer-column {
+        align-items: flex-start;
+    }
+
+    .footer-column--center {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column--right {
+        align-items: flex-end;
+        text-align: right;
+    }
 }
 
 .footer-email {
@@ -555,7 +597,7 @@ footer h2 {
 .footer-cta {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--spacing-sm);
 }
 
