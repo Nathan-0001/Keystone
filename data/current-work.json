@@ -17,20 +17,20 @@
       "description": "Large evaluation site, primarily Iron age and Romano British in date. Currently in need of one supervisor level staff. "
     },
     {
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39313.158310227394!2d-1.7371229210034327!3d51.98733412160699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870d5d57860738f%3A0x8a495460b9eb044b!2sMoreton-in-Marsh!5e0!3m2!1sen!2suk!4v1786527001705!5m2!1sen!2suk",
+      "location": "Moreton-in-Marsh",
+      "subheading": "Mitigation",
+      "startDate": "01/09/2026",
+      "endDate": "27/10/2026",
+      "description": "We are in need of 2-3 archaeologists on mutli-phase Romano-British excavation."
+    },
+    {
       "location": "Eastington, Stonehouse",
       "subheading": "Evaluation",
       "startDate": "14/09/2026",
       "endDate": "02/10/2026",
-      "description": "2-3 archaeologist needed on 173 30m trenching evaluation on Roman multi-phase farmsteads.  ",
+      "description": "We are in need of 2-3 archaeologists on an evaluation consisting of 173 trenches, 30m in length, on a Roman multi-phase farmsteads.  ",
       "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d93982.21641588549!2d-2.310792216128621!3d51.757432584178744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871a754d745a14f%3A0x70567e87cf3217b7!2sEastington%2C%20Stonehouse!5e0!3m2!1sen!2suk!4v1786524219555!5m2!1sen!2suk"
-    },
-    {
-      "location": "Blackpole road, Worcester",
-      "subheading": "Evaluation",
-      "startDate": "05/10/2026",
-      "endDate": "16/09/2026",
-      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2444.6163445880475!2d-2.2003893241278476!3d52.21401915883936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870f1b2c357de99%3A0x9aca5d13a970c8ba!2sBlackpole%20Rd%2C%20Worcester!5e0!3m2!1sen!2suk!4v1786524763770!5m2!1sen!2suk",
-      "description": "2 archaeologist needed on 49, 30m trenches\n"
     },
     {
       "location": "Tewkesbury",
@@ -38,31 +38,15 @@
       "startDate": "14/09/2026",
       "endDate": "12/10/2026",
       "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57218.27861851879!2d-2.201242934021226!3d51.993629798054954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870e1bda52abb99%3A0xcd0491511441529!2sTewkesbury!5e0!3m2!1sen!2suk!4v1786526764898!5m2!1sen!2suk",
-      "description": "3 archaeologists needed on a excavation of a late iron age settlement "
+      "description": "We are in need of 3 archaeologists on a excavation of a late iron age settlement."
     },
     {
-      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39313.158310227394!2d-1.7371229210034327!3d51.98733412160699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870d5d57860738f%3A0x8a495460b9eb044b!2sMoreton-in-Marsh!5e0!3m2!1sen!2suk!4v1786527001705!5m2!1sen!2suk",
-      "location": "Moreton-in-Marsh",
-      "subheading": "Mitigation",
-      "startDate": "01/09/2026",
-      "endDate": "27/10/2026",
-      "description": "2-3 archaeologist needed on mutli-phase Romano-British excavation "
-    },
-    {
-      "location": "Bristol ",
-      "subheading": "Evaluation ",
-      "startDate": "24/08/2026",
-      "endDate": "To be determined ",
-      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d159067.63735851957!2d-2.755526681789243!3d51.4685873307085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871836681b3d861%3A0x8ee4b22e4b9ad71f!2sBristol!5e0!3m2!1sen!2suk!4v1786543799083!5m2!1sen!2suk",
-      "description": "Mid-sized evaluation "
-    },
-    {
-      "location": "Essex",
-      "subheading": "Evaluation ",
-      "startDate": "24/08/2026",
-      "endDate": "To be determined",
-      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d446837.8387979205!2d0.25807017251417713!3d51.77959467324784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d85627fe870dd3%3A0x4257cb3847ee5079!2sEssex!5e0!3m2!1sen!2suk!4v1786543956973!5m2!1sen!2suk",
-      "description": "Mid-sized evaluation"
+      "location": "Blackpole road, Worcester",
+      "subheading": "Evaluation",
+      "startDate": "16/09/2026",
+      "endDate": "05/10/2026",
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2444.6163445880475!2d-2.2003893241278476!3d52.21401915883936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870f1b2c357de99%3A0x9aca5d13a970c8ba!2sBlackpole%20Rd%2C%20Worcester!5e0!3m2!1sen!2suk!4v1786524763770!5m2!1sen!2suk",
+      "description": "We are in need of 2 archaeologists on an evaluation consisting of 49 trenches, 30m in length, era to be confirmed."
     },
     {
       "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d442633.715460669!2d-0.418195307651105!3d52.20288731222019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877c44ccc9f2baf%3A0x567ccebe8196c7e8!2sSt%20Neots%2C%20St.%20Neots!5e0!3m2!1sen!2suk!4v1786545543136!5m2!1sen!2suk",
@@ -70,7 +54,23 @@
       "subheading": "Mitigation",
       "startDate": "24/08/2026",
       "endDate": "11/09/2026",
-      "description": "Romano-British excavation "
+      "description": "Romano-British excavation. We are waiting for more information on this site."
+    },
+    {
+      "location": "Bristol ",
+      "subheading": "Evaluation ",
+      "startDate": "24/08/2026",
+      "endDate": "To be determined ",
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d159067.63735851957!2d-2.755526681789243!3d51.4685873307085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871836681b3d861%3A0x8ee4b22e4b9ad71f!2sBristol!5e0!3m2!1sen!2suk!4v1786543799083!5m2!1sen!2suk",
+      "description": "Mid-sized evaluation. We are waiting for more information on this site."
+    },
+    {
+      "location": "Essex",
+      "subheading": "Evaluation ",
+      "startDate": "24/08/2026",
+      "endDate": "To be determined",
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d446837.8387979205!2d0.25807017251417713!3d51.77959467324784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d85627fe870dd3%3A0x4257cb3847ee5079!2sEssex!5e0!3m2!1sen!2suk!4v1786543956973!5m2!1sen!2suk",
+      "description": "Mid-sized evaluation. We are waiting for more information on this site."
     }
   ]
 }
