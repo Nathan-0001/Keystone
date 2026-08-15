@@ -586,6 +586,29 @@ footer h2 {
         align-items: flex-end;
         text-align: right;
     }
+
+    .footer-cta {
+        align-items: flex-start;
+    }
+
+    .footer-column--right .footer-cta {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-column--center {
+        order: 1;
+    }
+
+    .footer-column--left {
+        order: 2;
+    }
+
+    .footer-column--right {
+        order: 3;
+    }
 }
 
 .footer-email {
@@ -597,7 +620,7 @@ footer h2 {
 .footer-cta {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--spacing-sm);
 }
 
